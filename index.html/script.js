@@ -48,8 +48,10 @@ console.log(pictures);
 
 let pictureItem = "";
 let thumbItem = "";
+
 const containerItem = document.querySelectorAll("item-active");
 const containerThumb = document.querySelectorAll("thumb-active");
+
 console.log(containerItem);
 console.log(containerThumb);
 
@@ -77,5 +79,28 @@ pictureList[slider].classList.add("active");
 
 const nextBtn = document.getElementsByClassName("next");
 const prevBtn = document.getElementsByClassName("prev");
-nextBtn.addEventListener("click", functionNext);
-prevBtn.addEventListener("click", functionPrev);
+
+nextBtn.addEventListener("click", clickNext);
+prevBtn.addEventListener("click", clickPrev);
+
+function clickNext() {
+  pictureList[slider].classList.remove("active");
+  if (slider < pictureList.length - 1) {
+    slider++;
+  } else {
+    slider = 0;
+    {
+      pictureList[slider].classList.add("active");
+    }
+  }
+}
+
+function clickPrev() {
+  pictureList[slider].classList.remove("active");
+  if (slider > 0) {
+    slider--;
+  } else {
+    slider === pictureList.length - 1;
+  }
+  pictureList[slider].classList.add("active");
+}
